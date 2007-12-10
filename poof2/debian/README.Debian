@@ -1,0 +1,14 @@
+'ASInterface Installer' aka poof2
+-------------------------------
+
+Asinstaller is a simple front-end wrapper to easy the
+development of visual installer assistants.
+
+The idea is to provide a visual interface to those
+3rd party packaes that are downloaded by user.
+
+By examaple; look at skyperinstaller. Just need to
+download and install a package. Instead with dealing
+with kdialog and kfmclient, you can get a nice
+progressbar with a pìcture and some text, and 
+download any file you want all in one app.

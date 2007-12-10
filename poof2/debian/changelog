@@ -1,0 +1,35 @@
+poof2 (0.5-7) stable; urgency=low
+
+  * Added transfer rate 
+
+ -- Augusto Beiro <abeiro@activasistemas.com>  Fri, 23 Mar 2007 16:26:14 +0100
+
+poof2 (0.5-6) stable; urgency=low
+
+  * Fixed font sizing 
+
+ -- Augusto Beiro <abeiro@activasistemas.com>  Mon, 16 Oct 2006 12:49:43 +0200
+
+poof2 (0.5-5) stable; urgency=low
+
+  * Sync with rev5
+    - mainwindow centers on screen
+
+ -- Augusto Beiro Salanova <abeiro@moria>  Sun, 15 Oct 2006 00:42:38 +0200
+
+poof2 (0.5-4) stable; urgency=low
+
+  * Fixed bug when obtaining status
+  * Updated with setShot
+  * updated with setTitle
+  * Better visuals
+  * Fixed bash wrapper
+
+ -- Augusto Beiro Salanova <abeiro@moria>  Wed, 13 Sep 2006 19:44:11 +0200
+ 
+poof2 (0.5-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Augusto Beiro Salanova <abeiro@moria>  Wed, 13 Sep 2006 19:44:11 +0200
+

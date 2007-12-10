@@ -1,0 +1,60 @@
+<!DOCTYPE DCOP-IDL><DCOP-IDL>
+<SOURCE>dcopdemoiface.h</SOURCE>
+<INCLUDE>dcopobject.h</INCLUDE>
+<CLASS>
+    <NAME>DCOPDemoIface</NAME>
+    <SUPER>DCOPObject</SUPER>
+    <FUNC>
+        <TYPE>void</TYPE>
+        <NAME>setLabel</NAME>
+        <ARG><TYPE  qleft="const" qright="&amp;">QString</TYPE><NAME>str</NAME></ARG>
+     </FUNC>
+    <FUNC>
+        <TYPE>void</TYPE>
+        <NAME>setSay</NAME>
+        <ARG><TYPE  qleft="const" qright="&amp;">QString</TYPE><NAME>str</NAME></ARG>
+     </FUNC>
+    <FUNC>
+        <TYPE>void</TYPE>
+        <NAME>setShot</NAME>
+        <ARG><TYPE  qleft="const" qright="&amp;">QString</TYPE><NAME>str</NAME></ARG>
+     </FUNC>
+    <FUNC>
+        <TYPE>void</TYPE>
+        <NAME>setTitle</NAME>
+        <ARG><TYPE  qleft="const" qright="&amp;">QString</TYPE><NAME>str</NAME></ARG>
+     </FUNC>
+    <FUNC>
+        <TYPE>void</TYPE>
+        <NAME>setProgreso</NAME>
+        <ARG><TYPE>int</TYPE><NAME>p</NAME></ARG>
+     </FUNC>
+    <FUNC>
+        <TYPE>void</TYPE>
+        <NAME>setProgresoP</NAME>
+        <ARG><TYPE>unsigned long int</TYPE><NAME>p</NAME></ARG>
+     </FUNC>
+    <FUNC>
+        <TYPE>int</TYPE>
+        <NAME>getFile</NAME>
+        <ARG><TYPE  qleft="const" qright="&amp;">QString</TYPE><NAME>src</NAME></ARG>
+        <ARG><TYPE  qleft="const" qright="&amp;">QString</TYPE><NAME>dst</NAME></ARG>
+     </FUNC>
+    <FUNC>
+        <TYPE>int</TYPE>
+        <NAME>getStatus</NAME>
+     </FUNC>
+    <FUNC>
+        <TYPE>int</TYPE>
+        <NAME>errStatus</NAME>
+     </FUNC>
+    <FUNC>
+        <TYPE>int</TYPE>
+        <NAME>getWinId</NAME>
+     </FUNC>
+    <FUNC>
+        <TYPE>void</TYPE>
+        <NAME>shoshow</NAME>
+     </FUNC>
+</CLASS>
+</DCOP-IDL>
