@@ -1,14 +1,13 @@
-'ASInterface Installer' aka poof2
--------------------------------
+'ASLinux Installer Interface' (aka poof2)
+-----------------------------------------
 
-Asinstaller is a simple front-end wrapper to easy the
-development of visual installer assistants.
+poof2 is a simple front-end wrapper to ease the development of visual installer assistants.
 
-The idea is to provide a visual interface to those
-3rd party packaes that are downloaded by user.
+The idea is to provide a visual interface to install 3rd party software that cannot be distributed in any
+other way.
 
-By examaple; look at skyperinstaller. Just need to
-download and install a package. Instead with dealing
-with kdialog and kfmclient, you can get a nice
-progressbar with a pìcture and some text, and 
-download any file you want all in one app.
+By example; look at skypeinstaller. Just need to download and install a package. Instead with dealing
+with kdialog and kfmclient, you can get a nice progressbar, a screenshot, some text, and download any 
+file you want all in one app.
+
+poof2 can be controlled via dcop using some functions.
