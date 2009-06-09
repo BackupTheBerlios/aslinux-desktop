@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Agente Horde3
+Exec=ash3xm
+Icon=ktip
+Terminal=false
+X-KDE-StartupNotify=false
+X-DCOP-ServiceType=Unique
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
+OnlyShowIn=KDE;

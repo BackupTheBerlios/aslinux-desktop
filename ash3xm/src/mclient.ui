@@ -1,0 +1,283 @@
+<ui version="4.0" >
+ <class>Form</class>
+ <widget class="QWidget" name="Form" >
+  <property name="windowModality" >
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>360</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="font" >
+   <font>
+    <family>Bitstream Vera Sans</family>
+   </font>
+  </property>
+  <property name="windowTitle" >
+   <string>Agente Horde3</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="systray.qrc" >
+    <normaloff>:/images/bad.png</normaloff>:/images/bad.png</iconset>
+  </property>
+  <widget class="QLabel" name="label" >
+   <property name="geometry" >
+    <rect>
+     <x>21</x>
+     <y>23</y>
+     <width>130</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>URL Horde       </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2" >
+   <property name="geometry" >
+    <rect>
+     <x>21</x>
+     <y>54</y>
+     <width>130</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Usuario</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3" >
+   <property name="geometry" >
+    <rect>
+     <x>21</x>
+     <y>85</y>
+     <width>130</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Contraseña</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="textURL" >
+   <property name="geometry" >
+    <rect>
+     <x>157</x>
+     <y>23</y>
+     <width>223</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="textUser" >
+   <property name="geometry" >
+    <rect>
+     <x>157</x>
+     <y>54</y>
+     <width>101</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="textPass" >
+   <property name="geometry" >
+    <rect>
+     <x>157</x>
+     <y>85</y>
+     <width>101</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="echoMode" >
+    <enum>QLineEdit::Password</enum>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textSystem" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>140</y>
+     <width>361</width>
+     <height>71</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>120</y>
+     <width>221</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Mensajes del sistema</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ButTest" >
+   <property name="geometry" >
+    <rect>
+     <x>221</x>
+     <y>331</y>
+     <width>75</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="minimumSize" >
+    <size>
+     <width>75</width>
+     <height>27</height>
+    </size>
+   </property>
+   <property name="text" >
+    <string>Probar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ButOk" >
+   <property name="geometry" >
+    <rect>
+     <x>302</x>
+     <y>331</y>
+     <width>75</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="minimumSize" >
+    <size>
+     <width>75</width>
+     <height>27</height>
+    </size>
+   </property>
+   <property name="text" >
+    <string>Aceptar</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="folder_id" >
+   <property name="geometry" >
+    <rect>
+     <x>149</x>
+     <y>221</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5" >
+   <property name="geometry" >
+    <rect>
+     <x>21</x>
+     <y>221</y>
+     <width>122</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Bandeja  de entrada</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="calendar_id" >
+   <property name="geometry" >
+    <rect>
+     <x>149</x>
+     <y>249</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6" >
+   <property name="geometry" >
+    <rect>
+     <x>21</x>
+     <y>249</y>
+     <width>122</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Calendario</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7" >
+   <property name="geometry" >
+    <rect>
+     <x>21</x>
+     <y>277</y>
+     <width>122</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Chequear cada</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="intervalo" >
+   <property name="geometry" >
+    <rect>
+     <x>149</x>
+     <y>277</y>
+     <width>111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="minimum" >
+    <number>60</number>
+   </property>
+   <property name="maximum" >
+    <number>300</number>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="systray.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>ButOk</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>aGo()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>339</x>
+     <y>243</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>199</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ButTest</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>aTestParams()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>229</x>
+     <y>243</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>199</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>aTestParams()</slot>
+  <slot>aGo()</slot>
+ </slots>
+</ui>

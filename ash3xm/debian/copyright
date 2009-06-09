@@ -1,0 +1,27 @@
+This package was debianized by Augusto Beiro <abeiro@activasistemas.com> on
+Mon, 01 Jun 2009 11:17:56 +0200.
+
+
+Upstream Author(s):
+
+    Activa Sistemas
+    XML-RPC Code borrowed from  http://code.google.com/p/qxmlrpc/
+	Wrote by  Dmitry Poplavsky <dima@thekompany.com>,<dmitry.poplavsky@gmail.com>
+	GNU Lesser General Public License
+	- 
+
+Copyright:
+
+    Copyright (C) 2009 Activa Sistemas
+    Copyright (C) Dmitry Poplavsky (XMLRPC Code)
+
+License:
+
+    GPL & LGPL (XMLRPC parts)
+	
+
+The Debian packaging is (C) 2009, Augusto Beiro <abeiro@activasistemas.com> and
+is licensed under the GPL, see `/usr/share/common-licenses/GPL'.
+
+# Please also look if there are files or directories which have a
+# different copyright/license attached and list them here.

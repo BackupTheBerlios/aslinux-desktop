@@ -1,0 +1,14 @@
+Source: ash3xm
+Section: Internet
+Priority: extra
+Maintainer: Augusto Beiro <abeiro@activasistemas.com>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: <insert the upstream URL, if relevant>
+
+Package: ash3xm
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Horde3 XMLRPC agent
+ Horde 3 XMLRPC  agent
+
