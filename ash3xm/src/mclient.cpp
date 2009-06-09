@@ -248,7 +248,8 @@ void mclient::processReturnValue( int requestId, xmlrpc::Variant value )
 
 void mclient::processFault( int requestId, int errorCode, QString errorString )
 {
-    
+    trayIcon->setIcon(QIcon(":/images/heart.png"));
+    trayIcon->setToolTip(QString("Error")+QString(errorString));
     textSystem->setText(errorString);
     
 
@@ -374,8 +375,7 @@ void mclient::processSummary(int requestId, xmlrpc::Variant value) {
 
 	trayIcon->setIcon(QIcon(":/images/mail.png"));
         trayIcon->setToolTip(QString(unseen)+" mensaje(s) sin leer");
-        trayIcon->show(); 
-        
+                
 
 	if (onchange==0) {
 		adjustSize ();
