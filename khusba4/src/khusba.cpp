@@ -206,7 +206,7 @@ void khusba::recMoreInfo(const QDBusMessage & rep)
 					   "Notify");
 	QVariantMap paraA;
 	QStringList paraB;
-	paraB << "http://www.google.es" << "1";
+	paraB << "http://www.google.es" << "Info";
 
 
 	// sussssasa{sv}i

@@ -1,0 +1,15 @@
+Source: khusba4
+Section: desktop
+Priority: extra
+Maintainer: Augusto Beiro <abeiro@activasistemas.com>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: https://cvs.berlios.de/cgi-bin/viewvc.cgi/aslinux-desktop/khusba4/
+
+Package: khusba4
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: kdebase-runtime
+Description: khusba listen DBUS signals from HAL and routes messages to knotify via DBUS.
+ khusba listen DBUS signals from HAL and routes messages to knotify via DBUS.
+ Shows information about  usb gadgets plugged
