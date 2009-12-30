@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QtDBus/QtDBus>
+#include <QtNetwork/QtNetwork>
 
 /**
 	@author Augusto Beiro <abeiro@activasistemas.com>
@@ -37,6 +38,7 @@ private slots:
      void messageSlot(const QString &text);
      void recMoreInfo(const QDBusMessage &rep);
      void recError(const QDBusError &err,const QDBusMessage &rep);
+     void requestMoreInfoSlot(uint uid,const QString &text);
 
 };
 

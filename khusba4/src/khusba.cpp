@@ -18,6 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "khusba.h"
+#include "QSyncHttp.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/sysctl.h>
+#include <linux/sysctl.h>
 
 struct QStringVariantArray {
     QString key;
@@ -26,6 +31,8 @@ struct QStringVariantArray {
 
 Q_DECLARE_METATYPE(QStringVariantArray);
 Q_DECLARE_METATYPE(QList < QStringVariantArray >);
+Q_DECLARE_METATYPE(QString );
+Q_DECLARE_METATYPE(QList < QString >);
 
 struct DeviceNotificacion {
     QString VxP;
@@ -72,8 +79,16 @@ khusba::khusba(QObject * parent):QObject(parent)
 					 "org.freedesktop.Hal.Manager",
 					 "DeviceAdded", this,
 					 SLOT(messageSlot(QString)));
+
+    QDBusConnection::sessionBus().connect("",
+					 "/VisualNotifications",
+					 "org.kde.VisualNotifications",
+					 "ActionInvoked", this,
+					 SLOT(requestMoreInfoSlot(uint,QString)));
+
     qDebug("Connected");
     // messageSlot("/org/freedesktop/Hal/devices/usb_device_7ca_a815_300633400662000");
+    //requestMoreInfoSlot(1,"/org/freedesktop/Hal/devices/usb_device_83a_a618_1_0");
 }
 
 void khusba::messageSlot(const QString & text)
@@ -118,6 +133,7 @@ void khusba::recMoreInfo(const QDBusMessage & rep)
     QString vendorname;
     QString devicename;
     QString parent;
+    QString udi;
 
     DeviceNotificacion Notification;
     Notification.VxP="_";
@@ -148,9 +164,11 @@ void khusba::recMoreInfo(const QDBusMessage & rep)
 	else if (messages[i].key == "usb_device.product_id")
 	    productID =
 		QString::number(QString(messages[i].value.toString()).
-				toInt(), 16);
+				toInt(),16);
 	else if (messages[i].key == "info.parent")
 	    parent = messages[i].value.toString();
+	else if (messages[i].key =="info.udi")
+		udi.append(QString(messages[i].value.toString()));
     }
 
     int j = 0;
@@ -206,7 +224,9 @@ void khusba::recMoreInfo(const QDBusMessage & rep)
 					   "Notify");
 	QVariantMap paraA;
 	QStringList paraB;
-	paraB << "http://www.google.es" << "Info";
+	bool discard;
+	paraB << productID.sprintf("%04x:%04x",vendorID.toInt(&discard,16),productID.toInt(&discard,16)) << "Info"
+	<<udi<<"Add";
 
 
 	// sussssasa{sv}i
@@ -221,6 +241,146 @@ void khusba::recMoreInfo(const QDBusMessage & rep)
 	    qDebug() << "Cound't send message to knotify:";
 	}
     }
+
+}
+void khusba::requestMoreInfoSlot(uint uid,const QString &text) {
+
+	static QTime tElapsed(0,0,0,0);
+	
+	if (QTime::currentTime ().secsTo(tElapsed)>-3) 
+		return;
+	else {
+		tElapsed=QTime::currentTime ();	
+	}	
+	
+	
+
+	qDebug()<<text;
+	if (text.indexOf("/")==0) {
+		// Add device
+		QString driver;
+		QString bustype;
+		QString vendorID;
+		QString productID;
+		QString vendorname;
+		QString devicename;
+		QString parent;
+		QString udi;
+
+		QDBusMessage msg =QDBusMessage::createMethodCall("org.freedesktop.Hal", "/org/freedesktop/Hal/Manager",
+				       "org.freedesktop.Hal.Manager",
+				       "GetAllDevices");
+    		QDBusMessage res=QDBusConnection::systemBus().call(msg);
+		
+		QStringList dAll= qdbus_cast < QStringList >(res.arguments()[0]);
+		
+		//qDebug() << res.arguments()[0];
+		QList <QString> children;
+
+		for (int j = 0; j < dAll.size(); j++) {
+			if ((dAll[j].indexOf(text)==0)&&(dAll[j]!=text))
+				children.append(dAll[j]);
+		}
+		qDebug() << children;
+
+		// Get primary info */
+		msg =QDBusMessage::createMethodCall("org.freedesktop.Hal", text,
+				       "org.freedesktop.Hal.Device",
+				       "GetAllProperties");
+    		res=QDBusConnection::systemBus().call(msg);
+		QList < QStringVariantArray > dInfo = qdbus_cast < QList < QStringVariantArray > >(res.arguments()[0]);
+    		qDebug() << dInfo;
+    		for (int i = 0; i < dInfo.size(); i++) {
+				if (dInfo[i].key == "info.vendor")
+			vendorname.append(QString(dInfo[i].value.toString()));
+			else if (dInfo[i].key == "info.product")
+			devicename.append(QString(dInfo[i].value.toString()));
+			else if (dInfo[i].key == "info.linux.driver")
+			driver.append(QString(dInfo[i].value.toString()));
+			else if (dInfo[i].key == "linux.subsystem")
+			bustype = QString(dInfo[i].value.toString());
+			else if (dInfo[i].key == "usb_device.vendor_id")
+			vendorID =
+				QString::number(QString(dInfo[i].value.toString()).
+						toInt(), 16);
+			else if (dInfo[i].key == "usb_device.product_id")
+			productID =
+				QString::number(QString(dInfo[i].value.toString()).
+						toInt(),16);
+			else if (dInfo[i].key == "info.parent")
+			parent = dInfo[i].value.toString();
+			else if (dInfo[i].key =="info.udi")
+				udi.append(QString(dInfo[i].value.toString()));
+		}
+		// Get more info from children 
+		int Drivercounter=2;
+		for (int j=0;j<children.size();j++) {
+			msg =QDBusMessage::createMethodCall("org.freedesktop.Hal", children[j],
+				       "org.freedesktop.Hal.Device",
+				       "GetAllProperties");
+    			res=QDBusConnection::systemBus().call(msg);
+			QList < QStringVariantArray > dInfo = qdbus_cast < QList < QStringVariantArray > >(res.arguments()[0]);
+			for (int i = 0; i < dInfo.size(); i++) {
+				if ((dInfo[i].key == "info.linux.driver")&&(QString(dInfo[i].value.toString()).length()>0)) 
+					driver.append("&driver"+QString::number(Drivercounter++,10)+"="+QString(dInfo[i].value.toString()));
+
+
+			}
+		}
+
+		
+
+		QString URL;
+		bool discard;
+		URL.append(productID.sprintf("vendorxproduct=%04x:%04x",vendorID.toInt(&discard,16),productID.toInt(&discard,16)));
+		URL.append("&description="+devicename);
+		URL.append("&bus=USB");
+		URL.append("&driver1="+driver);
+		URL.append("&altdescription="+vendorname);
+		int name[] = {CTL_KERN, KERN_OSRELEASE};
+	        int namelen = 2;
+	        char oldval[32];  /* 4 would suffice */
+        	size_t len = sizeof(oldval);
+        	int i, error;
+	        error = sysctl (name, namelen,(void *)oldval, &len, NULL, 0 );
+		URL.append("&kversion="+QString(QByteArray(oldval,len)));
+		URL.append("&notes=(Via khusba4)");
+
+		URL.append("&shash="+ QCryptographicHash::hash((QByteArray)URL.toAscii(),QCryptographicHash::Md5).toBase64());
+		qDebug()<<URL;	
+
+
+		QSyncHttp host("luhdc.berlios.de");
+		QBuffer getOutput;
+		host.Get( "/public_action_send4.php?"+URL.replace(QChar(' '),"%20") ,&getOutput );
+		qDebug() << getOutput.data();
+
+	
+		/*msg=QDBusMessage::createMethodCall("org.kde.klauncher", "/KLauncher",
+				       "org.kde.KLauncher",
+				       "exec_blind");
+		msg <<"konqueror"<<QStringList(QString("http://luhdc.berlios.de/public_action_send4.php?"+URL));
+        	QDBusConnection::sessionBus().send(msg);*/
+		msg =QDBusMessage::createMethodCall("org.kde.VisualNotifications",
+					   "/VisualNotifications",
+					   "org.kde.VisualNotifications",
+					   "Notify");
+		QVariantMap paraA;
+		QStringList paraB;
+		// sussssasa{sv}i
+		msg << "Sistema" << (uint)100 << "luhdc" << "usb-key" <<QString("Peticion enviada") << QString(getOutput.data()) << paraB << paraA << 5000;		
+		QDBusConnection::sessionBus().send(msg);
+
+	}
+	else if (text.indexOf(":")>0) {
+		// Check device
+		QDBusMessage msg=QDBusMessage::createMethodCall("org.kde.klauncher", "/KLauncher",
+				       "org.kde.KLauncher",
+				       "exec_blind");
+		msg <<"konqueror"<<QStringList(QString("http://luhdc.berlios.de/Pages/USB/View/VPID="+text));
+        	QDBusConnection::sessionBus().send(msg);
+	}
+
 
 }
 
