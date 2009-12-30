@@ -1,3 +1,15 @@
+khusba4 (1.0-4) stable; urgency=low
+
+  * Update version number. First stable release.
+
+ -- tyler <tyler@khand>  Wed, 30 Dec 2009 13:11:41 +0100
+
+khusba4 (0.2-0) stable; urgency=low
+
+  * Updadted new rules file
+
+ -- tyler <tyler@khand>  Wed, 30 Dec 2009 13:04:51 +0100
+
 khusba4 (0.1-2) stable; urgency=low
 
   * Added package info
