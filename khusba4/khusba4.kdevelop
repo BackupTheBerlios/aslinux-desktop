@@ -23,6 +23,8 @@
       <group pattern="*.ui" name="User Interface" />
       <group pattern="*.png" name="Icons" />
       <group pattern="*" name="Others" />
+      <hidenonprojectfiles>false</hidenonprojectfiles>
+      <hidenonlocation>false</hidenonlocation>
     </groups>
     <tree>
       <hidenonprojectfiles>false</hidenonprojectfiles>
@@ -76,6 +78,7 @@
       <synchronize>true</synchronize>
       <orientation>Vertical</orientation>
     </splitheadersource>
+    <references/>
   </kdevcppsupport>
   <kdevdoctreeview>
     <ignoretocs>
@@ -138,17 +141,17 @@
   </kdevdebugger>
   <kdevtrollproject>
     <run>
-      <mainprogram></mainprogram>
+      <mainprogram>/opt/projects/custom/khusba4</mainprogram>
       <programargs></programargs>
       <directoryradio>executable</directoryradio>
       <runarguments>
-        <khusba4></khusba4>
+        <khusba4/>
       </runarguments>
       <cwd>
         <khusba4>/opt/projects/custom/khusba4</khusba4>
       </cwd>
       <debugarguments>
-        <khusba4></khusba4>
+        <khusba4/>
       </debugarguments>
       <globaldebugarguments></globaldebugarguments>
       <globalcwd>/opt/projects/custom/khusba4</globalcwd>
@@ -196,7 +199,7 @@
     <projectdoc>
       <docsystem>Colección de documentación de Doxygen</docsystem>
       <docurl>khusba4.tag</docurl>
-      <usermanualurl></usermanualurl>
+      <usermanualurl/>
     </projectdoc>
   </kdevdocumentation>
   <substmap>
@@ -220,4 +223,11 @@
       <implementationsuffix>.cpp</implementationsuffix>
     </filetemplates>
   </cppsupportpart>
+  <kdevcvsservice>
+    <recursivewhenupdate>true</recursivewhenupdate>
+    <prunedirswhenupdate>true</prunedirswhenupdate>
+    <createdirswhenupdate>true</createdirswhenupdate>
+    <recursivewhencommitremove>true</recursivewhencommitremove>
+    <revertoptions>-C</revertoptions>
+  </kdevcvsservice>
 </kdevelop>
