@@ -13,7 +13,12 @@ LIBS += -lQtDBus
 
 HEADERS += khusba.h
 
-INSTALLS += target
+INSTALLS += target \
+ desktop
 
 target.path = /${DESTDIR}/usr/bin
+
+desktop.files += khusba4.desktop
+
+desktop.path = /${DESTDIR}/usr/share/autostart
 

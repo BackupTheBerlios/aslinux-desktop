@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=khusba4
+Icon=usb-key
+Type=Application
+Terminal=false
+X-KDE-StartupNotify=false
+X-DBUS-StartupType=Unique
+OnlyShowIn=KDE;
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
