@@ -8,9 +8,12 @@ INCLUDEPATH += /usr/include/qt4/
 
 QT -= gui
 
-QT += opengl
 
 LIBS += -lQtDBus
 
 HEADERS += khusba.h
+
+INSTALLS += target
+
+target.path = /${DESTDIR}/usr/bin
 
